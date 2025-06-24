@@ -1,0 +1,16 @@
+{
+  "googleFormUrl": "https://docs.google.com/forms/d/e/[YOUR_FORM_ID]/viewform?embedded=true",
+  "paypalDonateUrl": "https://www.paypal.com/donate?hosted_button_id=[YOUR_BUTTON_ID]",
+  "sermons": [
+    {
+      "title": "Sermon 1",
+      "date": "June 22, 2025",
+      "zoomUrl": "https://zoom.us/j/[YOUR_ZOOM_ID]"
+    },
+    {
+      "title": "Sermon 2",
+      "date": "June 15, 2025",
+      "zoomUrl": "https://zoom.us/j/[YOUR_ZOOM_ID]"
+    }
+  ]
+}
