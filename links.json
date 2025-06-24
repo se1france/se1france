@@ -1,6 +1,6 @@
 {
   "googleFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdt83HSu4L4OGhtGGg2BaK09DlRCoLcTuJoBYsih_ht8jhDjA/viewform?embedded=true",
-   "paypalDonateUrl": "https://www.paypal.com/donate?hosted_button_id=[YOUR_BUTTON_ID]",
+  "paypalDonateUrl": "https://www.paypal.com/donate?hosted_button_id=[YOUR_BUTTON_ID]",
   "sermons": [
     {
       "title": "Sermon 1",
