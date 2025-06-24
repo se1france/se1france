@@ -10,10 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Load external links and SEO keywords
-  fetch('links.json')
+  fetch('/links.json')
     .then(response => response.json())
     .then(data => {
-      // Index page elements
       if (document.getElementById('google-form')) {
         document.getElementById('google-form').innerHTML = `<iframe src="${data.googleFormUrl}" class="w-full h-96" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>`;
       }
@@ -28,13 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         `).join('');
       }
-
-      // SEO page: Display keywords
       if (document.getElementById('keyword-list')) {
         document.getElementById('keyword-list').innerHTML = data.seoKeywords.map(keyword => `<li>${keyword}</li>`).join('');
       }
-
-      // SEO page: Add keyword form
       const form = document.getElementById('add-keyword-form');
       if (form) {
         form.addEventListener('submit', e => {
@@ -45,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.textContent = newKeyword;
             document.getElementById('keyword-list').appendChild(li);
             document.getElementById('new-keyword').value = '';
-            alert('Keyword added to display. To make permanent, add to links.json.');
+            alert('Keyword added to display. Add to links.json for permanence.');
           }
         });
       }
