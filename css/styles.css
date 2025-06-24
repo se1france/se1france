@@ -1,0 +1,4 @@
+/* Custom styles if needed */
+img.cursor-pointer:hover {
+  opacity: 0.8;
+}
