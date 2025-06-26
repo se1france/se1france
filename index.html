@@ -1,88 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spirit Embassy France</title>
-  <meta name="description" content="Spirit Embassy France - Christian worship with Prophet Uebert Angel. Join Good News Daily and Bonne Nouvelle in France and Francophone countries.">
+  <title>Spirit Embassy France - Église Évangélique</title>
+  <meta name="description" content="Spirit Embassy France - Église évangélique accueillante à Paris. Rejoignez notre communauté pour des cultes inspirants avec Prophet Uebert Angel.">
   <meta name="keywords" content="spirit embassy france, goodnewsfrance, good news daily, bonne nouvelle, prophet uebert angel, spirit embassy branch in france, francophonie, christian church france, french church, francophone church, paris church">
-  <meta name="geo.region" content="FR">
-  <meta name="geo.placename" content="France">
+  <meta name="author" content="Spirit Embassy France">
   <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://se1france.github.io/se1france/">
+  <meta property="og:title" content="Spirit Embassy France - Église Évangélique">
+  <meta property="og:description" content="Église évangélique accueillante à Paris. Rejoignez notre communauté chrétienne avec Prophet Uebert Angel.">
+  <meta property="og:site_name" content="Spirit Embassy France">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://se1france.github.io/se1france/">
+  <meta property="twitter:title" content="Spirit Embassy France - Église Évangélique">
+  <meta property="twitter:description" content="Église évangélique accueillante à Paris. Rejoignez notre communauté chrétienne.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Church",
+    "name": "Spirit Embassy France",
+    "url": "https://se1france.github.io/se1france/",
+    "description": "Église évangélique accueillante à Paris",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "FR",
+      "addressLocality": "Paris"
+    },
+    "sameAs": []
+  }
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://*.github.io; script-src 'self' https://cdn.tailwindcss.com; frame-src https://docs.google.com;">
+  <style>
+    .bg-deep-blue { background-color: #1A237E; }
+    .text-deep-blue { color: #1A237E; }
+    .bg-vibrant-pink { background-color: #E6007A; }
+    .text-vibrant-pink { color: #E6007A; }
+    .bg-bright-orange { background-color: #FF8C00; }
+    .text-bright-orange { color: #FF8C00; }
+    .text-bright-cyan { color: #00CFFF; }
+    .hover\:text-vibrant-pink:hover { color: #E6007A; }
+    .hover\:bg-vibrant-pink:hover { background-color: #E6007A; }
+  </style>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; frame-src https://docs.google.com;">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-gray-100 font-sans">
-  <header class="bg-white shadow fixed top-0 w-full z-10">
-    <div class="container mx-auto py-4 text-center">
-      <img src="/img/temp-logo.jpeg" alt="Spirit Embassy France Logo" class="logo h-16">
-      <nav class="mt-4">
-        <a href="#home" class="px-4 text-blue-600">Home</a>
-        <a href="#register" class="px-4 text-blue-600">Register</a>
-        <a href="#donate" class="px-4 text-blue-600">Donate</a>
-        <a href="#events" class="px-4 text-blue-600">Events</a>
-        <a href="#sermons" class="px-4 text-blue-600">Sermons</a>
-        <a href="seo.html" class="px-4 text-blue-600">SEO</a>
-      </nav>
+  <nav class="bg-black text-white shadow fixed top-0 w-full z-10">
+    <div class="container mx-auto py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold font-serif">Spirit Embassy France</h1>
+      <ul class="nav-menu flex gap-4">
+        <li><a href="#home" class="text-white hover:text-vibrant-pink" onclick="showPage('home')">Accueil</a></li>
+        <li><a href="#programs" class="text-white hover:text-vibrant-pink" onclick="showPage('programs')">Programmes</a></li>
+        <li><a href="#sermons" class="text-white hover:text-vibrant-pink" onclick="showPage('sermons')">Prédications</a></li>
+        <li><a href="#visitors" class="text-white hover:text-vibrant-pink" onclick="showPage('visitors')">Visiteurs</a></li>
+        <li><a href="#giving" class="text-white hover:text-vibrant-pink" onclick="showPage('giving')">Offrandes</a></li>
+        <li><a href="seo.html" class="text-white hover:text-vibrant-pink">SEO</a></li>
+      </ul>
+      <button class="mobile-menu text-white text-2xl hidden">☰</button>
     </div>
-  </header>
-  <main class="pt-24">
-    <section id="home" class="bg-blue-900 text-white py-16 text-center">
-      <div class="container mx-auto">
-        <h1 class="text-4xl font-bold">Welcome to Spirit Embassy France</h1>
-        <p class="mt-4 text-lg">Join our community led by Prophet Uebert Angel for Good News Daily and Bonne Nouvelle.</p>
-      </div>
-    </section>
-    <section id="programs" class="py-16">
-      <div class="container mx-auto">
-        <h2 class="text-2xl font-bold text-center">Church Programs</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-          <img src="/img/program1.jpg" alt="Program 1" class="w-full h-64 object-cover rounded cursor-pointer">
-          <img src="/img/program2.jpg" alt="Program 2" class="w-full h-64 object-cover rounded cursor-pointer">
+  </nav>
+
+  <main class="container pt-24">
+    <div id="home" class="page active">
+      <section class="bg-deep-blue text-white py-16 text-center rounded-lg">
+        <h1 class="text-4xl font-bold font-serif">Bienvenue à Spirit Embassy France</h1>
+        <p class="mt-4 text-lg">Une communauté de foi, d'espérance et d'amour au cœur de la France avec Prophet Uebert Angel.</p>
+        <div class="mt-6 flex gap-4 justify-center flex-wrap">
+          <a href="#visitors" class="bg-deep-blue text-white py-2 px-4 rounded hover:bg-vibrant-pink" onclick="showPage('visitors')">Première Visite ?</a>
+          <a href="#programs" class="bg-transparent text-white py-2 px-4 rounded border-2 border-white hover:bg-white hover:text-deep-blue" onclick="showPage('programs')">Nos Programmes</a>
+        </div>
+      </section>
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-bold text-deep-blue">Notre Mission</h3>
+          <p class="mt-2 text-gray-800">Répandre l'amour du Christ à travers la France et les pays francophones.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-bold text-deep-blue">Nos Valeurs</h3>
+          <p class="mt-2 text-gray-800">Foi, Espérance, Amour, Communion fraternelle, Service.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-bold text-deep-blue">Rejoignez-nous</h3>
+          <p class="mt-2 text-gray-800">Une famille spirituelle accueillante pour tous.</p>
+        </div>
+      </section>
+    </div>
+
+    <div id="programs" class="page">
+      <h2 class="text-2xl font-bold text-center text-deep-blue">Programmes à Venir</h2>
+      <div class="mt-6 space-y-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+          <div class="text-bright-orange font-bold">Dimanche 30 Juin 2025 - 10h00</div>
+          <h3 class="text-lg font-bold">Culte Dominical</h3>
+          <p class="text-gray-800">Service de louange et prédication - "La foi qui transforme"</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow">
+          <div class="text-bright-orange font-bold">Mercredi 3 Juillet 2025 - 19h30</div>
+          <h3 class="text-lg font-bold">Étude Biblique</h3>
+          <p class="text-gray-800">Étude approfondie du livre des Actes - Chapitre 2</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow">
+          <div class="text-bright-orange font-bold">Vendredi 5 Juillet 2025 - 20h00</div>
+          <h3 class="text-lg font-bold">Soirée de Prière</h3>
+          <p class="text-gray-800">Intercession pour la France et les nations francophones</p>
         </div>
       </div>
-    </section>
-    <section id="register" class="py-16 bg-gray-200">
-      <div class="container mx-auto">
-        <h2 class="text-2xl font-bold text-center">Visitor Registration</h2>
-        <div id="google-form" class="mt-8 max-w-lg mx-auto">
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdt83HSu4L4OGhtGGg2BaK09DlRCoLcTuJoBYsih_ht8jhDjA/viewform?embedded=true" class="w-full h-96" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+    </div>
+
+    <div id="sermons" class="page">
+      <h2 class="text-2xl font-bold text-center text-deep-blue">Prédications Récentes</h2>
+      <div id="sermon-links" class="mt-6 space-y-4"></div>
+    </div>
+
+    <div id="visitors" class="page">
+      <h2 class="text-2xl font-bold text-center text-deep-blue">Inscription Visiteurs</h2>
+      <div class="mt-6 max-w-lg mx-auto bg-white p-6 rounded-lg shadow">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdt83HSu4L4OGhtGGg2BaK09DlRCoLcTuJoBYsih_ht8jhDjA/viewform?embedded=true" class="w-full h-[600px]" frameborder="0" marginheight="0" marginwidth="0">Chargement...</iframe>
+      </div>
+    </div>
+
+    <div id="giving" class="page">
+      <h2 class="text-2xl font-bold text-center text-deep-blue">Offrandes et Dons</h2>
+      <p class="mt-4 text-center text-gray-800">"Que chacun donne comme il l'a résolu en son cœur." - 2 Corinthiens 9:7</p>
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-bold text-deep-blue">Dîme et Offrandes</h3>
+          <p class="mt-2 text-gray-800">Soutenez le ministère et l'œuvre de Dieu.</p>
+          <div id="paypal-donate-button" class="mt-4">
+            <a href="#" class="bg-deep-blue text-white py-2 px-4 rounded hover:bg-vibrant-pink">Faire un Don</a>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-bold text-deep-blue">Projets Spéciaux</h3>
+          <p class="mt-2 text-gray-800">Participez à l'évangélisation et l'expansion.</p>
+          <div id="paypal-projects-button" class="mt-4">
+            <a href="#" class="bg-deep-blue text-white py-2 px-4 rounded hover:bg-vibrant-pink">Soutenir un Projet</a>
+          </div>
         </div>
       </div>
-    </section>
-    <section id="donate" class="py-16">
-      <div class="container mx-auto text-center">
-        <h2 class="text-2xl font-bold">Support Our Mission</h2>
-        <p class="mt-4">Your donations help spread Bonne Nouvelle in France and beyond.</p>
-        <div id="paypal-button" class="mt-8">
-          <a href="#" class="bg-blue-600 text-white py-2 px-4 rounded">Donate Now</a>
-        </div>
-      </div>
-    </section>
-    <section id="events" class="py-16 bg-gray-200">
-      <div class="container mx-auto">
-        <h2 class="text-2xl font-bold text-center">Upcoming Events</h2>
-        <div class="mt-8 max-w-lg mx-auto">
-          <ul class="list-disc text-left">
-            <li>Sunday Service: June 29, 2025, 10 AM</li>
-            <li>Bible Study: July 2, 2025, 7 PM</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    <section id="sermons" class="py-16">
-      <div class="container mx-auto">
-        <h2 class="text-2xl font-bold text-center">Recent Sermons</h2>
-        <div id="sermon-links" class="mt-8 max-w-lg mx-auto">
-          <!-- Zoom links -->
-        </div>
-      </div>
-    </section>
+    </div>
   </main>
-  <footer class="bg-gray-800 text-white py-4 text-center">
-    <p>Contact: info@spiritembassyfrance.org | © 2025 Spirit Embassy France</p>
+
+  <footer class="bg-black text-white py-4 text-center">
+    <div class="container">
+      <p>Contact : <a href="mailto:info@spiritembassyfrance.org" class="text-bright-cyan">info@spiritembassyfrance.org</a> | © 2025 Spirit Embassy France</p>
+      <p>Site sécurisé - Hébergé sur GitHub Pages</p>
+    </div>
   </footer>
+
   <script src="js/script.js"></script>
 </body>
 </html>
