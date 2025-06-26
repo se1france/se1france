@@ -1,29 +1,63 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Smooth scrolling for index.html
-  if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-      });
-    });
+  // Page navigation
+  let currentPage = 'home';
+
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+    const selectedPage = document.getElementById(pageId);
+    if (selectedPage) {
+      selectedPage.classList.add('active');
+      currentPage = pageId;
+    }
+    history.pushState(null, null, `#${pageId}`);
   }
 
-  // Load external links and SEO keywords
+  // Handle browser back/forward
+  window.addEventListener('popstate', () => {
+    const hash = window.location.hash.slice(1) || 'home';
+    showPage(hash);
+  });
+
+  // Initialize page
+  window.addEventListener('load', () => {
+    const hash = window.location.hash.slice(1) || 'home';
+    showPage(hash);
+  });
+
+  // Mobile menu toggle
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const navMenu = document.querySelector('.nav-menu');
+  mobileMenu.addEventListener('click', () => {
+    navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  // Responsive menu
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      navMenu.style.display = 'flex';
+      mobileMenu.classList.add('hidden');
+    } else {
+      navMenu.style.display = 'none';
+      mobileMenu.classList.remove('hidden');
+    }
+  });
+
+  // Load external links
   fetch('/links.json')
     .then(response => response.json())
     .then(data => {
-      if (document.getElementById('google-form')) {
-        document.getElementById('google-form').innerHTML = `<iframe src="${data.googleFormUrl}" class="w-full h-96" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>`;
+      if (document.getElementById('paypal-donate-button')) {
+        document.getElementById('paypal-donate-button').innerHTML = `<a href="${data.paypalDonateUrl}" class="bg-deep-blue text-white py-2 px-4 rounded hover:bg-vibrant-pink">Faire un Don</a>`;
       }
-      if (document.getElementById('paypal-button')) {
-        document.getElementById('paypal-button').innerHTML = `<a href="${data.paypalDonateUrl}" class="bg-blue-600 text-white py-2 px-4 rounded">Donate Now</a>`;
+      if (document.getElementById('paypal-projects-button')) {
+        document.getElementById('paypal-projects-button').innerHTML = `<a href="${data.paypalProjectsUrl}" class="bg-deep-blue text-white py-2 px-4 rounded hover:bg-vibrant-pink">Soutenir un Projet</a>`;
       }
       if (document.getElementById('sermon-links')) {
         document.getElementById('sermon-links').innerHTML = data.sermons.map(sermon => `
-          <div class="mb-4">
-            <p class="font-bold">${sermon.title} (${sermon.date})</p>
-            <a href="${sermon.zoomUrl}" target="_blank" class="text-blue-600">Join on Zoom</a>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="text-lg font-bold">${sermon.title}</h3>
+            <p class="text-gray-800">Date : ${sermon.date}</p>
+            <a href="${sermon.zoomUrl}" target="_blank" class="text-bright-cyan">Regarder sur Zoom</a>
           </div>
         `).join('');
       }
@@ -40,10 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
             li.textContent = newKeyword;
             document.getElementById('keyword-list').appendChild(li);
             document.getElementById('new-keyword').value = '';
-            alert('Keyword added to display. Add to links.json for permanence.');
+            alert('Mot-clé ajouté à l\'affichage. Ajoutez à links.json pour permanence.');
           }
         });
       }
     })
-    .catch(error => console.error('Error loading links:', error));
+    .catch(error => console.error('Erreur chargement liens:', error));
 });
