@@ -1,15 +1,16 @@
 {
   "googleFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdt83HSu4L4OGhtGGg2BaK09DlRCoLcTuJoBYsih_ht8jhDjA/viewform?embedded=true",
   "paypalDonateUrl": "https://www.paypal.com/donate?hosted_button_id=[YOUR_BUTTON_ID]",
+  "paypalProjectsUrl": "https://www.paypal.com/donate?hosted_button_id=[YOUR_PROJECTS_BUTTON_ID]",
   "sermons": [
     {
-      "title": "Sermon 1",
-      "date": "June 22, 2025",
+      "title": "Marcher par la Foi",
+      "date": "23 Juin 2025",
       "zoomUrl": "https://zoom.us/j/[YOUR_ZOOM_ID]"
     },
     {
-      "title": "Sermon 2",
-      "date": "June 15, 2025",
+      "title": "Les Promesses de Dieu",
+      "date": "19 Juin 2025",
       "zoomUrl": "https://zoom.us/j/[YOUR_ZOOM_ID]"
     }
   ],
