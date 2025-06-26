@@ -1,14 +1,32 @@
-.logo {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-height: 80px; /* Adjust logo size */
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 }
-img.cursor-pointer:hover {
-  opacity: 0.8;
+@font-face {
+  font-family: 'Lora';
+  src: url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+}
+.font-sans {
+  font-family: 'Roboto', sans-serif;
+}
+.font-serif {
+  font-family: 'Lora', serif;
 }
 iframe {
-  min-height: 500px;
+  min-height: 600px;
+}
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #000000;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 1rem;
+  }
+  .mobile-menu {
+    display: block;
+  }
 }
