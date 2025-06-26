@@ -1,51 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SEO - Spirit Embassy France</title>
-  <meta name="description" content="Manage SEO for Spirit Embassy France, targeting France and Francophone countries with keywords like Good News Daily, Prophet Uebert Angel, and Bonne Nouvelle.">
+  <meta name="description" content="Gérer le SEO pour Spirit Embassy France, ciblant la France et les pays francophones avec des mots-clés comme Good News Daily, Prophet Uebert Angel, et Bonne Nouvelle.">
   <meta name="keywords" content="spirit embassy france, goodnewsfrance, good news daily, bonne nouvelle, prophet uebert angel, spirit embassy branch in france, francophonie, christian church france, french church, francophone church, paris church">
   <meta name="geo.region" content="FR">
   <meta name="geo.placename" content="France">
   <meta name="robots" content="index, follow">
   <script src="https://cdn.tailwindcss.com"></script>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://*.github.io; script-src 'self' https://cdn.tailwindcss.com;">
+  <style>
+    .bg-deep-blue { background-color: #1A237E; }
+    .text-deep-blue { color: #1A237E; }
+    .bg-vibrant-pink { background-color: #E6007A; }
+    .text-vibrant-pink { color: #E6007A; }
+    .bg-bright-orange { background-color: #FF8C00; }
+    .text-bright-orange { color: #FF8C00; }
+    .text-bright-cyan { color: #00CFFF; }
+    .hover\:text-vibrant-pink:hover { color: #E6007A; }
+    .hover\:bg-vibrant-pink:hover { background-color: #E6007A; }
+  </style>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com;">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-gray-100 font-sans">
-  <header class="bg-white shadow fixed top-0 w-full z-10">
-    <div class="container mx-auto py-4 text-center">
-      <img src="/img/temp-logo.jpeg" alt="Spirit Embassy France Logo" class="logo h-16">
-      <nav class="mt-4">
-        <a href="index.html#home" class="px-4 text-blue-600">Home</a>
-        <a href="index.html#register" class="px-4 text-blue-600">Register</a>
-        <a href="index.html#donate" class="px-4 text-blue-600">Donate</a>
-        <a href="index.html#events" class="px-4 text-blue-600">Events</a>
-        <a href="index.html#sermons" class="px-4 text-blue-600">Sermons</a>
-        <a href="seo.html" class="px-4 text-blue-600 font-bold">SEO</a>
-      </nav>
+  <nav class="bg-black text-white shadow fixed top-0 w-full z-10">
+    <div class="container mx-auto py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold font-serif">Spirit Embassy France</h1>
+      <ul class="nav-menu flex gap-4">
+        <li><a href="index.html#home" class="text-white hover:text-vibrant-pink" onclick="showPage('home')">Accueil</a></li>
+        <li><a href="index.html#programs" class="text-white hover:text-vibrant-pink" onclick="showPage('programs')">Programmes</a></li>
+        <li><a href="index.html#sermons" class="text-white hover:text-vibrant-pink" onclick="showPage('sermons')">Prédications</a></li>
+        <li><a href="index.html#visitors" class="text-white hover:text-vibrant-pink" onclick="showPage('visitors')">Visiteurs</a></li>
+        <li><a href="index.html#giving" class="text-white hover:text-vibrant-pink" onclick="showPage('giving')">Offrandes</a></li>
+        <li><a href="seo.html" class="text-white font-bold hover:text-vibrant-pink">SEO</a></li>
+      </ul>
+      <button class="mobile-menu text-white text-2xl hidden">☰</button>
     </div>
-  </header>
-  <main class="pt-24 py-16">
-    <div class="container mx-auto">
-      <h1 class="text-3xl font-bold text-center">SEO Management</h1>
-      <p class="mt-4 text-center">Optimize Spirit Embassy France for France and Francophone countries.</p>
-      <div class="mt-8 max-w-lg mx-auto">
-        <h2 class="text-2xl font-bold">Current Keywords</h2>
-        <ul id="keyword-list" class="list-disc text-left mt-4"></ul>
-        <h2 class="text-2xl font-bold mt-8">Add New Keyword</h2>
-        <form id="add-keyword-form" class="mt-4">
-          <input type="text" id="new-keyword" class="w-full p-2 border rounded" placeholder="Enter new keyword">
-          <button type="submit" class="mt-2 bg-blue-600 text-white py-2 px-4 rounded">Add Keyword</button>
-        </form>
-        <p class="mt-4 text-sm">Note: New keywords are displayed below but must be manually added to links.json.</p>
-      </div>
+  </nav>
+
+  <main class="container pt-24 py-16">
+    <h1 class="text-3xl font-bold text-center text-deep-blue">Gestion SEO</h1>
+    <p class="mt-4 text-center text-gray-800">Optimisez Spirit Embassy France pour la France et les pays francophones.</p>
+    <div class="mt-8 max-w-lg mx-auto bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-bold text-deep-blue">Mots-clés Actuels</h2>
+      <ul id="keyword-list" class="list-disc text-left text-gray-800 mt-4"></ul>
+      <h2 class="text-2xl font-bold text-deep-blue mt-8">Ajouter un Mot-clé</h2>
+      <form id="add-keyword-form" class="mt-4">
+        <input type="text" id="new-keyword" class="w-full p-2 border rounded text-gray-800" placeholder="Entrez un nouveau mot-clé">
+        <button type="submit" class="mt-2 bg-deep-blue text-white py-2 px-4 rounded hover:bg-vibrant-pink">Ajouter</button>
+      </form>
+      <p class="mt-4 text-sm text-gray-800">Note : Les nouveaux mots-clés sont affichés ci-dessous mais doivent être ajoutés manuellement à links.json.</p>
     </div>
   </main>
-  <footer class="bg-gray-800 text-white py-4 text-center">
-    <p>Contact: info@spiritembassyfrance.org | © 2025 Spirit Embassy France</p>
+
+  <footer class="bg-black text-white py-4 text-center">
+    <div class="container">
+      <p>Contact : <a href="mailto:info@spiritembassyfrance.org" class="text-bright-cyan">info@spiritembassyfrance.org</a> | © 2025 Spirit Embassy France</p>
+      <p>Site sécurisé - Hébergé sur GitHub Pages</p>
+    </div>
   </footer>
+
   <script src="js/script.js"></script>
 </body>
 </html>
