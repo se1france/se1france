@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Spirit Embassy France - Église chrétienne moderne en France, accueillant tous dans la foi et l'amour">
+    <meta name="keywords" content="église Paris, église chrétienne France, culte dominical, étude biblique, communauté chrétienne, foi en France, église moderne, prière Paris, Spirit Embassy, église francophone">
+    <meta name="author" content="Spirit Embassy France">
+    <meta property="og:title" content="Spirit Embassy France - Église Chrétienne Moderne">
+    <meta property="og:description" content="Rejoignez notre communauté de foi en France. Cultes, études bibliques, et plus encore.">
+    <meta property="og:url" content="https://spiritembassyfrance.fr">
+    <meta property="og:type" content="website">
+    <title>Spirit Embassy France - Église Chrétienne Moderne</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>Spirit Embassy France</h2>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#accueil" class="nav-link">Accueil</a></li>
+                    <li><a href="#inscription" class="nav-link">Inscription</a></li>
+                    <li><a href="#dons" class="nav-link">Dons</a></li>
+                    <li><a href="#partenariat" class="nav-link">Partenariat</a></li>
+                    <li><a href="#programmes" class="nav-link">Programmes</a></li>
+                    <li><a href="#predications" class="nav-link">Prédications</a></li>
+                </ul>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Section Accueil -->
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Bienvenue à Spirit Embassy France</h1>
+            <p class="hero-subtitle">Répandre l'amour du Christ en France et dans les pays francophones</p>
+            <div class="hero-buttons">
+                <a href="#inscription" class="btn btn-primary">Nous Rejoindre</a>
+                <a href="#programmes" class="btn btn-secondary">Nos Programmes</a>
+            </div>
+        </div>
+        <div class="hero-info">
+            <div class="info-card">
+                <h3>Prochains Services</h3>
+                <p>Dimanche 10h00 - Culte Principal</p>
+                <p>Mercredi 19h00 - Étude Biblique</p>
+                <p>Vendredi 20h00 - Jeunesse Alive</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Inscription -->
+    <section id="inscription" class="section">
+        <div class="container">
+            <h2 class="section-title">Inscription</h2>
+            <p class="section-subtitle">Rejoignez notre communauté de foi</p>
+            
+            <div class="registration-grid">
+                <div class="registration-card">
+                    <h3>Nouveaux Visiteurs</h3>
+                    <p>Première visite ? Nous serions ravis de vous accueillir dans notre famille spirituelle.</p>
+                    <ul class="benefits-list">
+                        <li>Accueil personnalisé par notre équipe</li>
+                        <li>Guide du nouveau membre offert</li>
+                        <li>Invitation aux événements spéciaux</li>
+                        <li>Suivi spirituel personnalisé</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="openForm('newVisitor')">S'inscrire en tant que Visiteur</button>
+                </div>
+                
+                <div class="registration-card">
+                    <h3>Membres Officiels</h3>
+                    <p>Devenez membre officiel et participez pleinement à la vie de l'église.</p>
+                    <ul class="benefits-list">
+                        <li>Participation aux décisions de l'église</li>
+                        <li>Accès aux formations spécialisées</li>
+                        <li>Opportunités de service et leadership</li>
+                        <li>Réseau international de membres</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="openForm('officialMember')">Devenir Membre Officiel</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Dons -->
+    <section id="dons" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Dons & Offrandes</h2>
+            <p class="section-subtitle">Votre générosité soutient la mission de l'église</p>
+            
+            <div class="giving-grid">
+                <div class="giving-info">
+                    <h3>Pourquoi Donner ?</h3>
+                    <p>Vos dons nous permettent de :</p>
+                    <ul class="giving-benefits">
+                        <li>Maintenir nos locaux et équipements</li>
+                        <li>Soutenir les œuvres missionnaires</li>
+                        <li>Organiser des événements communautaires</li>
+                        <li>Aider les familles dans le besoin</li>
+                        <li>Former et équiper les ministères</li>
+                        <li>Étendre notre impact en France</li>
+                    </ul>
+                    
+                    <div class="giving-scripture">
+                        <p><em>"Donnez, et il vous sera donné: on versera dans votre sein une bonne mesure, serrée, secouée et qui déborde."</em></p>
+                        <cite>- Luc 6:38</cite>
+                    </div>
+                </div>
+                
+                <div class="giving-methods">
+                    <h3>Moyens de Don</h3>
+                    <div class="payment-options">
+                        <div class="payment-card">
+                            <h4>Don Unique</h4>
+                            <p>Faire un don ponctuel via PayPal</p>
+                            <div class="paypal-button" id="paypal-single">
+                                <p>Configuration PayPal requise</p>
+                                <p class="config-note">L'administrateur doit configurer le bouton PayPal dans la section admin.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-card">
+                            <h4>Don Mensuel</h4>
+                            <p>Soutien régulier automatique</p>
+                            <div class="paypal-button" id="paypal-recurring">
+                                <p>Configuration PayPal requise</p>
+                                <p class="config-note">L'administrateur doit configurer le bouton PayPal récurrent dans la section admin.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="security-info">
+                        <p><strong>🔒 Sécurisé</strong> - Tous les paiements sont cryptés et sécurisés par PayPal</p>
+                        <p><strong>🌍 International</strong> - Accepte toutes les cartes bancaires</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Partenariat -->
+    <section id="partenariat" class="section">
+        <div class="container">
+            <h2 class="section-title">Partenariat</h2>
+            <p class="section-subtitle">Devenez partenaire dans la vision de l'église</p>
+            
+            <div class="partnership-content">
+                <div class="partnership-info">
+                    <h3>Qu'est-ce que le Partenariat ?</h3>
+                    <p>Le partenariat est un engagement plus profond avec la vision et la mission de Spirit Embassy France. En tant que partenaire, vous participez activement à l'expansion du Royaume de Dieu en France et dans les pays francophones.</p>
+                    
+                    <h4>Avantages du Partenariat :</h4>
+                    <ul class="partnership-benefits">
+                        <li>Participation aux réunions stratégiques</li>
+                        <li>Accès prioritaire aux séminaires et conférences</li>
+                        <li>Mentorat spirituel personnalisé</li>
+                        <li>Opportunités de leadership et de service</li>
+                        <li>Réseau de partenaires internationaux</li>
+                        <li>Formation continue en leadership chrétien</li>
+                        <li>Accès aux ressources exclusives</li>
+                    </ul>
+
+                    <div class="partnership-scripture">
+                        <p><em>"Car nous sommes ouvriers avec Dieu. Vous êtes le champ de Dieu, l'édifice de Dieu."</em></p>
+                        <cite>- 1 Corinthiens 3:9</cite>
+                    </div>
+                </div>
+                
+                <div class="partnership-form">
+                    <h3>Devenir Partenaire</h3>
+                    <p>Remplissez notre formulaire de candidature pour commencer votre parcours de partenariat avec nous.</p>
+                    
+                    <div class="partnership-steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <p>Candidature</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <p>Entretien</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <p>Formation</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">4</span>
+                            <p>Activation</p>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary btn--full-width" onclick="openForm('partnership')">Candidature Partenariat</button>
+                    
+                    <div class="contact-partnership">
+                        <h4>Contact Partenariat</h4>
+                        <p>Email: partenariat@spiritembassyfrance.fr</p>
+                        <p>Tél: <span data-contact="phone">+33 1 XX XX XX XX</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Programmes -->
+    <section id="programmes" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Nos Programmes</h2>
+            <p class="section-subtitle">Participez à nos activités hebdomadaires</p>
+            
+            <div class="programs-grid">
+                <div class="program-card">
+                    <h3>Culte Dominical</h3>
+                    <div class="program-time">Dimanche 10h00 - 12h00</div>
+                    <p>Service principal de louange, prière et prédication. Un moment de communion fraternelle et d'édification spirituelle.</p>
+                    <div class="program-location">📍 Sanctuaire principal</div>
+                    <div class="program-features">
+                        <span>Louange</span>
+                        <span>Prédication</span>
+                        <span>Prière</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="registerForEvent('culte-dominical')">S'inscrire</button>
+                </div>
+                
+                <div class="program-card">
+                    <h3>Étude Biblique</h3>
+                    <div class="program-time">Mercredi 19h00 - 21h00</div>
+                    <p>Approfondissement de la Parole de Dieu avec étude interactive et discussions en groupes.</p>
+                    <div class="program-location">📍 Salle de formation</div>
+                    <div class="program-features">
+                        <span>Étude</span>
+                        <span>Discussion</span>
+                        <span>Prière</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="registerForEvent('etude-biblique')">S'inscrire</button>
+                </div>
+                
+                <div class="program-card">
+                    <h3>Prière du Matin</h3>
+                    <div class="program-time">Tous les jours 6h00 - 7h00</div>
+                    <p>Temps de prière matinale, intercession et recherche de la face de Dieu pour commencer la journée.</p>
+                    <div class="program-location">📍 Chapelle</div>
+                    <div class="program-features">
+                        <span>Prière</span>
+                        <span>Intercession</span>
+                        <span>Méditation</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="registerForEvent('priere-matin')">Rejoindre</button>
+                </div>
+                
+                <div class="program-card">
+                    <h3>Jeunesse Alive</h3>
+                    <div class="program-time">Vendredi 20h00 - 22h00</div>
+                    <p>Rencontre dynamique pour les jeunes de 18-35 ans avec louange moderne, enseignement et fellowship.</p>
+                    <div class="program-location">📍 Salle jeunesse</div>
+                    <div class="program-features">
+                        <span>Louange</span>
+                        <span>Enseignement</span>
+                        <span>Fellowship</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="registerForEvent('jeunesse-alive')">S'inscrire</button>
+                </div>
+            </div>
+            
+            <div class="upcoming-events">
+                <h3>Événements Spéciaux</h3>
+                <div class="events-list" id="events-list">
+                    <p>Chargement des événements...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Prédications -->
+    <section id="predications" class="section">
+        <div class="container">
+            <h2 class="section-title">Prédications</h2>
+            <p class="section-subtitle">Écoutez et regardez nos messages inspirants</p>
+            
+            <div class="sermons-grid">
+                <div class="sermon-card" data-sermon="sermon1">
+                    <h3>La Foi qui Déplace les Montagnes</h3>
+                    <div class="sermon-meta">
+                        <span class="sermon-date">8 septembre 2025</span>
+                        <span class="sermon-pastor">Pasteur Jean Dupont</span>
+                        <span class="sermon-type youtube">YouTube</span>
+                    </div>
+                    <div class="sermon-description">
+                        <p>Une prédication puissante sur la foi qui transforme les impossibilités en possibilités.</p>
+                    </div>
+                    <div class="sermon-player">
+                        <p>Prédication sera disponible ici une fois configurée</p>
+                        <div class="config-note">
+                            <p class="config-text">Configuration requise par l'administrateur</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sermon-card" data-sermon="sermon2">
+                    <h3>Marcher dans la Destinée</h3>
+                    <div class="sermon-meta">
+                        <span class="sermon-date">1 septembre 2025</span>
+                        <span class="sermon-pastor">Pasteur Marie Martin</span>
+                        <span class="sermon-type zoom">Zoom</span>
+                    </div>
+                    <div class="sermon-description">
+                        <p>Découvrez le plan de Dieu pour votre vie et comment marcher dans votre destinée divine.</p>
+                    </div>
+                    <div class="sermon-player">
+                        <p>Enregistrement sera disponible ici une fois configuré</p>
+                        <div class="config-note">
+                            <p class="config-text">Configuration requise par l'administrateur</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sermon-card" data-sermon="sermon3">
+                    <h3>L'Amour Inconditionnel de Dieu</h3>
+                    <div class="sermon-meta">
+                        <span class="sermon-date">25 août 2025</span>
+                        <span class="sermon-pastor">Pasteur Paul Durand</span>
+                        <span class="sermon-type google">Google Workspace</span>
+                    </div>
+                    <div class="sermon-description">
+                        <p>Une révélation profonde sur l'amour de Dieu qui dépasse toute compréhension.</p>
+                    </div>
+                    <div class="sermon-player">
+                        <p>Contenu audio/vidéo sera disponible ici une fois configuré</p>
+                        <div class="config-note">
+                            <p class="config-text">Configuration requise par l'administrateur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sermon-archive">
+                <h3>Archives des Prédications</h3>
+                <p>Retrouvez toutes nos prédications précédentes organisées par thème et par date.</p>
+                <button class="btn btn-outline">Voir les Archives</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Configuration Admin -->
+    <section id="configuration" class="section admin-section hidden">
+        <div class="container">
+            <h2 class="section-title">🔧 Configuration Administrateur</h2>
+            <p class="section-subtitle">Gérez tous les liens et contenus depuis cette interface</p>
+            
+            <div class="admin-tabs">
+                <button class="tab-button active" onclick="app.showTab('forms')">Formulaires</button>
+                <button class="tab-button" onclick="app.showTab('payments')">Paiements</button>
+                <button class="tab-button" onclick="app.showTab('sermons')">Prédications</button>
+                <button class="tab-button" onclick="app.showTab('events')">Événements</button>
+                <button class="tab-button" onclick="app.showTab('links')">Liens</button>
+            </div>
+            
+            <!-- Formulaires Tab -->
+            <div class="tab-content active" id="forms-tab">
+                <h3>Configuration des Formulaires Google</h3>
+                <div class="form-config">
+                    <div class="config-item">
+                        <label>Formulaire Nouveaux Visiteurs :</label>
+                        <input type="url" id="config-new-visitor" placeholder="https://forms.google.com/...">
+                        <button class="btn btn-sm" onclick="saveConfig('forms.newVisitor', 'config-new-visitor')">Sauvegarder</button>
+                        <button class="btn btn-sm btn--outline" onclick="testLink(document.getElementById('config-new-visitor').value, 'Formulaire Visiteurs')">Tester</button>
+                    </div>
+                    <div class="config-item">
+                        <label>Formulaire Membres Officiels :</label>
+                        <input type="url" id="config-official-member" placeholder="https://forms.google.com/...">
+                        <button class="btn btn-sm" onclick="saveConfig('forms.officialMember', 'config-official-member')">Sauvegarder</button>
+                        <button class="btn btn-sm btn--outline" onclick="testLink(document.getElementById('config-official-member').value, 'Formulaire Membres')">Tester</button>
+                    </div>
+                    <div class="config-item">
+                        <label>Formulaire Partenariat :</label>
+                        <input type="url" id="config-partnership" placeholder="https://forms.google.com/...">
+                        <button class="btn btn-sm" onclick="saveConfig('forms.partnership', 'config-partnership')">Sauvegarder</button>
+                        <button class="btn btn-sm btn--outline" onclick="testLink(document.getElementById('config-partnership').value, 'Formulaire Partenariat')">Tester</button>
+                    </div>
+                    <div class="config-item">
+                        <label>Formulaire Inscription Événements :</label>
+                        <input type="url" id="config-event-registration" placeholder="https://forms.google.com/...">
+                        <button class="btn btn-sm" onclick="saveConfig('forms.eventRegistration', 'config-event-registration')">Sauvegarder</button>
+                        <button class="btn btn-sm btn--outline" onclick="testLink(document.getElementById('config-event-registration').value, 'Formulaire Événements')">Tester</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Paiements Tab -->
+            <div class="tab-content" id="payments-tab">
+                <h3>Configuration PayPal</h3>
+                <div class="payment-config">
+                    <div class="config-item">
+                        <label>Code Bouton PayPal Don Unique :</label>
+                        <textarea id="config-paypal-single" placeholder="Collez le code HTML du bouton PayPal ici" rows="4"></textarea>
+                        <button class="btn btn-sm" onclick="saveConfig('paypal.singleDonation', 'config-paypal-single')">Sauvegarder</button>
+                    </div>
+                    <div class="config-item">
+                        <label>Code Bouton PayPal Don Récurrent :</label>
+                        <textarea id="config-paypal-recurring" placeholder="Collez le code HTML du bouton PayPal ici" rows="4"></textarea>
+                        <button class="btn btn-sm" onclick="saveConfig('paypal.recurringDonation', 'config-paypal-recurring')">Sauvegarder</button>
+                    </div>
+                </div>
+                <div class="paypal-instructions">
+                    <h4>Instructions PayPal</h4>
+                    <ol>
+                        <li>Connectez-vous à votre compte PayPal Business</li>
+                        <li>Allez dans "Outils marchands" → "Boutons PayPal"</li>
+                        <li>Créez un nouveau bouton de don</li>
+                        <li>Copiez le code HTML généré</li>
+                        <li>Collez-le dans les champs ci-dessus</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- Prédications Tab -->
+            <div class="tab-content" id="sermons-tab">
+                <h3>Configuration des Prédications</h3>
+                <div class="sermons-config">
+                    <div class="config-item">
+                        <label>Prédication 1 - YouTube :</label>
+                        <input type="url" id="config-sermon1" placeholder="https://youtube.com/watch?v=...">
+                        <button class="btn btn-sm" onclick="saveConfig('sermons.sermon1', 'config-sermon1')">Sauvegarder</button>
+                        <button class="btn btn-sm btn--outline" onclick="testLink(document.getElementById('config-sermon1').value, 'Prédication 1')">Tester</button>
+                    </div>
+                    <div class="config-item">
+                        <label>Prédication 2 - Zoom :</label>
+                        <input type="url" id="config-sermon2" placeholder="https://zoom.us/rec/...">
+                        <button class="btn btn-sm" onclick="saveConfig('sermons.sermon2', 'config-sermon2')">Sauvegarder</button>
+                        <button class="btn btn-sm btn--outline" onclick="testLink(document.getElementById('config-sermon2').value, 'Prédication 2')">Tester</button>
+                    </div>
+                    <div class="config-item">
+                        <label>Prédication 3 - Google Drive :</label>
+                        <input type="url" id="config-sermon3" placeholder="https://drive.google.com/...">
+                        <button class="btn btn-sm" onclick="saveConfig('sermons.sermon3', 'config-sermon3')">Sauvegarder</button>
+                        <button class="btn btn-sm btn--outline" onclick="testLink(document.getElementById('config-sermon3').value, 'Prédication 3')">Tester</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Événements Tab -->
+            <div class="tab-content" id="events-tab">
+                <h3>Gestion des Événements</h3>
+                <div class="events-config">
+                    <div class="add-event">
+                        <h4>Ajouter un Événement</h4>
+                        <div class="event-form">
+                            <input type="text" id="event-title" placeholder="Titre de l'événement">
+                            <input type="date" id="event-date">
+                            <input type="time" id="event-time">
+                            <input type="text" id="event-location" placeholder="Lieu (optionnel)">
+                            <textarea id="event-description" placeholder="Description de l'événement" rows="3"></textarea>
+                            <button class="btn btn-primary" onclick="addEvent()">Ajouter Événement</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Liens Tab -->
+            <div class="tab-content" id="links-tab">
+                <h3>Configuration des Réseaux Sociaux</h3>
+                <div class="links-config">
+                    <div class="config-item">
+                        <label>Page Facebook :</label>
+                        <input type="url" id="config-facebook" placeholder="https://facebook.com/...">
+                        <button class="btn btn-sm" onclick="saveConfig('social.facebook', 'config-facebook')">Sauvegarder</button>
+                        <button class="btn btn-sm btn--outline" onclick="testLink(document.getElementById('config-facebook').value, 'Facebook')">Tester</button>
+                    </div>
+                    <div class="config-item">
+                        <label>Compte Instagram :</label>
+                        <input type="url" id="config-instagram" placeholder="https://instagram.com/...">
+                        <button class="btn btn-sm" onclick="saveConfig('social.instagram', 'config-instagram')">Sauvegarder</button>
+                        <button class="btn btn-sm btn--outline" onclick="testLink(document.getElementById('config-instagram').value, 'Instagram')">Tester</button>
+                    </div>
+                    <div class="config-item">
+                        <label>Chaîne YouTube :</label>
+                        <input type="url" id="config-youtube" placeholder="https://youtube.com/c/...">
+                        <button class="btn btn-sm" onclick="saveConfig('social.youtube', 'config-youtube')">Sauvegarder</button>
+                        <button class="btn btn-sm btn--outline" onclick="testLink(document.getElementById('config-youtube').value, 'YouTube')">Tester</button>
+                    </div>
+                    <div class="config-item">
+                        <label>Localisation Google Maps :</label>
+                        <input type="url" id="config-maps" placeholder="https://maps.google.com/...">
+                        <button class="btn btn-sm" onclick="saveConfig('social.googleMaps', 'config-maps')">Sauvegarder</button>
+                        <button class="btn btn-sm btn--outline" onclick="testLink(document.getElementById('config-maps').value, 'Google Maps')">Tester</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Spirit Embassy France</h3>
+                    <p>Répandre l'amour du Christ en France et dans les pays francophones</p>
+                    <p class="mission-verse">
+                        <em>"Allez, faites de toutes les nations des disciples"</em><br>
+                        <cite>- Matthieu 28:19</cite>
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📧 <span data-contact="email">contact@spiritembassyfrance.fr</span></p>
+                    <p>📞 <span data-contact="phone">+33 1 XX XX XX XX</span></p>
+                    <p>📍 <span data-contact="address">123 Avenue de la Paix</span>, <span data-contact="city">Paris</span></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#programmes">Programmes</a></li>
+                        <li><a href="#predications">Prédications</a></li>
+                        <li><a href="#inscription">Nous Rejoindre</a></li>
+                        <li><a href="#partenariat">Partenariat</a></li>
+                        <li><a href="#dons">Faire un Don</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Réseaux Sociaux</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank">Facebook</a>
+                        <a href="#" target="_blank">YouTube</a>
+                        <a href="#" target="_blank">Instagram</a>
+                    </div>
+                    <div class="newsletter">
+                        <h4>Newsletter</h4>
+                        <p>Restez informé de nos actualités</p>
+                        <button class="btn btn-sm btn--outline">S'abonner</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Spirit Embassy France. Tous droits réservés.</p>
+                <div class="footer-actions">
+                    <button class="admin-access" onclick="toggleAdmin()">Admin</button>
+                    <span class="footer-heart">Fait avec ❤️ pour la gloire de Dieu</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
