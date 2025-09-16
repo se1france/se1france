@@ -1,1 +1,67 @@
-
+{
+  "name": "Spirit Embassy France",
+  "short_name": "SE France",
+  "description": "Église chrétienne moderne en France dirigée par Prophet Uebert Angel",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#ff006e",
+  "icons": [
+    {
+      "src": "/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-512x512.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "fr",
+  "dir": "ltr",
+  "orientation": "portrait-primary",
+  "categories": ["religion", "lifestyle", "social"],
+  "scope": "/",
+  "id": "spirit-embassy-france",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "shortcuts": [
+    {
+      "name": "Inscription",
+      "short_name": "Inscription", 
+      "description": "S'inscrire comme visiteur ou membre",
+      "url": "/#inscription",
+      "icons": [{ "src": "/images/shortcut-inscription.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Programmes",
+      "short_name": "Programmes",
+      "description": "Voir les horaires et événements",
+      "url": "/#programmes", 
+      "icons": [{ "src": "/images/shortcut-programs.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Dons",
+      "short_name": "Dons",
+      "description": "Faire un don à l'église", 
+      "url": "/#dons",
+      "icons": [{ "src": "/images/shortcut-giving.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Prédications", 
+      "short_name": "Prédications",
+      "description": "Écouter les messages",
+      "url": "/#predications",
+      "icons": [{ "src": "/images/shortcut-sermons.png", "sizes": "96x96" }]
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "mailto",
+      "url": "mailto:contact@spiritembassyfrance.fr"
+    }
+  ]
+}
