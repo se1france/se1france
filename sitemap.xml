@@ -1,1 +1,57 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://spiritembassyfrance.fr/</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://spiritembassyfrance.fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://spiritembassyfrance.fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://spiritembassyfrance.fr/" />
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://spiritembassyfrance.fr/" />
+  </url>
+  
+  <!-- Inscription Page -->
+  <url>
+    <loc>https://spiritembassyfrance.fr/#inscription</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Dons Page -->
+  <url>
+    <loc>https://spiritembassyfrance.fr/#dons</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Programmes Page -->
+  <url>
+    <loc>https://spiritembassyfrance.fr/#programmes</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Prédications Page -->
+  <url>
+    <loc>https://spiritembassyfrance.fr/#predications</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Partenariat Page -->
+  <url>
+    <loc>https://spiritembassyfrance.fr/#partenariat</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+</urlset>
