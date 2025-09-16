@@ -1,9 +1,9 @@
 /*
- * SPIRIT EMBASSY FRANCE - CONFIGURATION FILE
- * ===========================================
+ * SPIRIT EMBASSY FRANCE - CONFIGURATION & JAVASCRIPT
+ * ==================================================
  * 
- * IMPORTANT: This section contains ALL external links and integrations.
- * To update the website, simply modify the values below and save this file.
+ * IMPORTANT: This file contains ALL external links and integrations.
+ * To update the website, simply modify the CHURCH_CONFIG section below.
  * 
  * CONFIGURATION GUIDE:
  * 1. Replace all "REPLACE_WITH_YOUR_*" placeholders with actual URLs/codes
@@ -45,775 +45,553 @@ const CHURCH_CONFIG = {
     
     // SOCIAL MEDIA & EXTERNAL LINKS - Replace with your actual URLs
     social: {
-        facebook: "REPLACE_WITH_FACEBOOK_PAGE_URL",
-        instagram: "REPLACE_WITH_INSTAGRAM_ACCOUNT_URL",
+        facebook: "REPLACE_WITH_FACEBOOK_URL",
+        instagram: "REPLACE_WITH_INSTAGRAM_URL",
         youtube: "REPLACE_WITH_YOUTUBE_CHANNEL_URL",
-        googleMaps: "REPLACE_WITH_GOOGLE_MAPS_LOCATION_URL"
+        twitter: "REPLACE_WITH_TWITTER_URL"
     },
     
-    // CHURCH CONTACT INFORMATION - Update with actual details
+    // CHURCH CONTACT INFORMATION - Update with your details
     contact: {
         email: "contact@spiritembassyfrance.fr",
-        phone: "REPLACE_WITH_ACTUAL_PHONE_NUMBER",
-        address: "REPLACE_WITH_ACTUAL_CHURCH_ADDRESS",
+        phone: "REPLACE_WITH_PHONE_NUMBER",
+        address: "REPLACE_WITH_CHURCH_ADDRESS",
         city: "Paris",
-        postalCode: "75001"
+        country: "France",
+        postalCode: "REPLACE_WITH_POSTAL_CODE"
     },
     
-    // EVENTS MANAGEMENT - Will be populated dynamically
-    events: [
-        // Example event structure:
-        // {
-        //     id: 1,
-        //     title: "Conférence Spéciale",
-        //     date: "2025-10-15",
-        //     time: "19:00",
-        //     description: "Une soirée exceptionnelle de louange et d'enseignement",
-        //     location: "Sanctuaire principal"
-        // }
-    ],
+    // GOOGLE MAPS & LOCATION - Replace with your coordinates
+    location: {
+        googleMapsUrl: "REPLACE_WITH_GOOGLE_MAPS_URL",
+        latitude: "48.8566",
+        longitude: "2.3522"
+    },
     
     // ADMIN SETTINGS
     admin: {
-        password: "SpiritEmbassy2025", // Change this password for security
-        maintenanceMode: false
+        password: "SpiritEmbassy2025!", // Change this password!
+        email: "admin@spiritembassyfrance.fr"
     }
 };
 
 // =============================================================================
-// APPLICATION CODE - DO NOT EDIT BELOW THIS LINE
+// APPLICATION LOGIC - DO NOT EDIT BELOW THIS LINE
 // =============================================================================
 
 class SpiritEmbassyApp {
     constructor() {
         this.config = CHURCH_CONFIG;
-        this.isAdminMode = false;
+        this.isAdminAuthenticated = false;
         this.init();
     }
 
     init() {
-        this.loadStoredData();
-        this.applyConfiguration();
         this.setupEventListeners();
-        this.validateConfiguration();
+        this.loadConfiguration();
+        this.setupMobileNavigation();
+        this.loadContent();
+        this.setupSmoothScrolling();
+        this.setupConfigurationPanel();
     }
 
     setupEventListeners() {
-        // Setup event listeners immediately if DOM is ready
+        // Wait for DOM to be ready
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                this.bindEvents();
-            });
-        } else {
-            // DOM is already ready
-            this.bindEvents();
-        }
-    }
-
-    bindEvents() {
-        console.log('Binding events...');
-        
-        // Mobile navigation toggle
-        this.setupMobileNavigation();
-        
-        // Smooth scrolling for navigation
-        this.setupSmoothScrolling();
-
-        // Header transparency on scroll
-        this.setupScrollEffects();
-
-        // Admin access button
-        this.setupAdminAccess();
-
-        // Tab switching in admin panel
-        this.setupAdminTabs();
-    }
-
-    setupMobileNavigation() {
-        const navToggle = document.getElementById('nav-toggle');
-        const navMenu = document.getElementById('nav-menu');
-        
-        console.log('Setting up mobile navigation:', { navToggle, navMenu });
-        
-        if (navToggle && navMenu) {
-            // Remove any existing event listeners
-            navToggle.replaceWith(navToggle.cloneNode(true));
-            const newNavToggle = document.getElementById('nav-toggle');
-            
-            newNavToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Nav toggle clicked');
-                
-                newNavToggle.classList.toggle('active');
-                navMenu.classList.toggle('active');
-                
-                // Close menu when clicking outside
-                if (navMenu.classList.contains('active')) {
-                    document.addEventListener('click', (event) => {
-                        if (!navMenu.contains(event.target) && !newNavToggle.contains(event.target)) {
-                            newNavToggle.classList.remove('active');
-                            navMenu.classList.remove('active');
-                        }
-                    }, { once: true });
-                }
-            });
-        }
-    }
-
-    setupSmoothScrolling() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = anchor.getAttribute('href');
-                const target = document.querySelector(targetId);
-                
-                if (target) {
-                    // Close mobile menu if open
-                    const navToggle = document.getElementById('nav-toggle');
-                    const navMenu = document.getElementById('nav-menu');
-                    if (navToggle && navMenu) {
-                        navToggle.classList.remove('active');
-                        navMenu.classList.remove('active');
-                    }
-                    
-                    const headerHeight = 80;
-                    const targetPosition = target.offsetTop - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    }
-
-    setupScrollEffects() {
-        let isScrolling = false;
-        
-        window.addEventListener('scroll', () => {
-            if (!isScrolling) {
-                window.requestAnimationFrame(() => {
-                    const header = document.querySelector('.header');
-                    if (header) {
-                        const scrolled = window.scrollY > 100;
-                        header.style.background = scrolled 
-                            ? 'rgba(26, 26, 46, 0.98)' 
-                            : 'rgba(26, 26, 46, 0.95)';
-                    }
-                    isScrolling = false;
-                });
-                isScrolling = true;
-            }
-        });
-    }
-
-    setupAdminAccess() {
-        const adminButtons = document.querySelectorAll('.admin-access');
-        console.log('Setting up admin access for buttons:', adminButtons.length);
-        
-        adminButtons.forEach(button => {
-            // Remove any existing event listeners by cloning
-            const newButton = button.cloneNode(true);
-            button.parentNode.replaceChild(newButton, button);
-            
-            newButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Admin button clicked');
-                this.toggleAdmin();
-            });
-        });
-    }
-
-    setupAdminTabs() {
-        const tabButtons = document.querySelectorAll('.tab-button');
-        tabButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const buttonText = e.target.textContent.toLowerCase().trim();
-                const tabMap = {
-                    'formulaires': 'forms',
-                    'paiements': 'payments', 
-                    'prédications': 'sermons',
-                    'événements': 'events',
-                    'liens': 'links'
-                };
-                const tabName = tabMap[buttonText];
-                if (tabName) {
-                    this.showTab(tabName);
-                }
-            });
-        });
-    }
-
-    validateConfiguration() {
-        const issues = [];
-        
-        // Check for placeholder values
-        const checkPlaceholders = (obj, path = '') => {
-            for (const [key, value] of Object.entries(obj)) {
-                if (typeof value === 'string' && value.includes('REPLACE_WITH_')) {
-                    issues.push(`${path}${key}: Placeholder not replaced`);
-                } else if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-                    checkPlaceholders(value, `${path}${key}.`);
-                }
-            }
-        };
-        
-        checkPlaceholders(this.config);
-        
-        if (issues.length > 0 && this.isAdminMode) {
-            console.warn('Configuration issues found:', issues);
-            this.showConfigurationStatus(issues);
-        }
-    }
-
-    showConfigurationStatus(issues) {
-        if (!this.isAdminMode) return;
-        
-        const adminSection = document.getElementById('configuration');
-        if (!adminSection) return;
-        
-        // Remove existing status
-        const existingStatus = adminSection.querySelector('.config-status');
-        if (existingStatus) {
-            existingStatus.remove();
-        }
-        
-        const statusDiv = document.createElement('div');
-        statusDiv.className = 'config-status';
-        statusDiv.innerHTML = `
-            <div style="background: rgba(255, 193, 7, 0.15); border: 1px solid rgba(255, 193, 7, 0.5); border-radius: 8px; padding: 16px; margin: 20px 0;">
-                <h4 style="color: #ffc107; margin-bottom: 12px;">⚠️ Configuration incomplète</h4>
-                <p style="margin-bottom: 8px;">Éléments à configurer:</p>
-                <ul style="margin: 8px 0 0 20px; color: #ffc107;">
-                    ${issues.slice(0, 10).map(issue => `<li style="margin: 4px 0; font-size: 14px;">${issue}</li>`).join('')}
-                    ${issues.length > 10 ? `<li style="margin: 4px 0; font-style: italic;">... et ${issues.length - 10} autres</li>` : ''}
-                </ul>
-            </div>
-        `;
-        
-        adminSection.insertBefore(statusDiv, adminSection.firstChild);
-    }
-
-    // Configuration Management
-    applyConfiguration() {
-        this.updateContactInfo();
-        this.updateSocialLinks();
-        this.updatePayPalButtons();
-        this.updateSermons();
-        this.updateEvents();
-    }
-
-    updateContactInfo() {
-        // Update footer contact information
-        const contactElements = document.querySelectorAll('[data-contact]');
-        contactElements.forEach(element => {
-            const contactType = element.getAttribute('data-contact');
-            if (this.config.contact[contactType] && 
-                !this.config.contact[contactType].includes('REPLACE_WITH_')) {
-                element.textContent = this.config.contact[contactType];
-            }
-        });
-    }
-
-    updateSocialLinks() {
-        const socialLinks = document.querySelectorAll('.social-links a');
-        socialLinks.forEach(link => {
-            const platform = link.textContent.toLowerCase();
-            if (this.config.social[platform] && 
-                !this.config.social[platform].includes('REPLACE_WITH_')) {
-                link.href = this.config.social[platform];
-            }
-        });
-    }
-
-    updatePayPalButtons() {
-        if (this.config.paypal.singleDonation && 
-            !this.config.paypal.singleDonation.includes('REPLACE_WITH_')) {
-            const singleContainer = document.getElementById('paypal-single');
-            if (singleContainer) {
-                singleContainer.innerHTML = this.config.paypal.singleDonation;
-            }
-        }
-
-        if (this.config.paypal.recurringDonation && 
-            !this.config.paypal.recurringDonation.includes('REPLACE_WITH_')) {
-            const recurringContainer = document.getElementById('paypal-recurring');
-            if (recurringContainer) {
-                recurringContainer.innerHTML = this.config.paypal.recurringDonation;
-            }
-        }
-    }
-
-    updateSermons() {
-        const sermonIds = ['sermon1', 'sermon2', 'sermon3'];
-        sermonIds.forEach(sermonId => {
-            if (this.config.sermons[sermonId] && 
-                !this.config.sermons[sermonId].includes('REPLACE_WITH_')) {
-                this.displaySermon(sermonId, this.config.sermons[sermonId]);
-            }
-        });
-    }
-
-    displaySermon(sermonId, url) {
-        const sermonCard = document.querySelector(`[data-sermon="${sermonId}"]`);
-        if (!sermonCard) return;
-
-        const playerContainer = sermonCard.querySelector('.sermon-player');
-        if (!playerContainer) return;
-
-        if (url.includes('youtube.com') || url.includes('youtu.be')) {
-            const videoId = this.extractYouTubeId(url);
-            if (videoId) {
-                playerContainer.innerHTML = `
-                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-                        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                                src="https://www.youtube.com/embed/${videoId}" 
-                                frameborder="0" 
-                                allowfullscreen>
-                        </iframe>
-                    </div>
-                `;
-            }
-        } else if (url.includes('zoom.us')) {
-            playerContainer.innerHTML = `
-                <div style="text-align: center; padding: 20px;">
-                    <p>📹 Enregistrement Zoom</p>
-                    <a href="${url}" target="_blank" class="btn btn-primary">Regarder</a>
-                </div>
-            `;
-        } else {
-            playerContainer.innerHTML = `
-                <div style="text-align: center; padding: 20px;">
-                    <a href="${url}" target="_blank" class="btn btn-primary">Écouter/Regarder</a>
-                </div>
-            `;
-        }
-    }
-
-    extractYouTubeId(url) {
-        const regex = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/;
-        const match = url.match(regex);
-        return match ? match[1] : null;
-    }
-
-    updateEvents() {
-        const eventsContainer = document.getElementById('events-list');
-        if (!eventsContainer) return;
-
-        if (this.config.events.length === 0) {
-            eventsContainer.innerHTML = '<p>Aucun événement spécial programmé pour le moment.</p>';
+            document.addEventListener('DOMContentLoaded', () => this.setupEventListeners());
             return;
         }
 
-        const eventsHtml = this.config.events
-            .sort((a, b) => new Date(a.date) - new Date(b.date))
-            .map(event => `
-                <div class="event-item" style="background: rgba(26, 26, 46, 0.8); padding: 16px; margin-bottom: 16px; border-radius: 8px; border: 1px solid rgba(255, 0, 110, 0.2);">
-                    <h4 style="color: #ff006e; margin-bottom: 8px;">${this.escapeHtml(event.title)}</h4>
-                    <p style="color: #00d4ff; margin-bottom: 8px;">
-                        ${this.formatDate(event.date)} 
-                        ${event.time ? 'à ' + event.time : ''}
-                        ${event.location ? ' - ' + event.location : ''}
-                    </p>
-                    <p style="margin-bottom: 12px;">${this.escapeHtml(event.description)}</p>
-                    <button class="btn btn-secondary" onclick="app.registerForEvent('${this.escapeHtml(event.title)}')">
-                        S'inscrire
-                    </button>
-                </div>
-            `).join('');
+        // Mobile navigation toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                navToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
 
-        eventsContainer.innerHTML = eventsHtml;
+        // Close mobile menu when clicking on links
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    
+                    if (target) {
+                        // Close mobile menu
+                        if (navToggle && navMenu) {
+                            navToggle.classList.remove('active');
+                            navMenu.classList.remove('active');
+                        }
+                        
+                        // Smooth scroll to target
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Form button listeners
+        this.setupFormButtonListeners();
     }
 
-    // Form Management
+    setupFormButtonListeners() {
+        const buttons = {
+            'new-visitor-btn': 'newVisitor',
+            'official-member-btn': 'officialMember', 
+            'partnership-btn': 'partnership'
+        };
+
+        Object.entries(buttons).forEach(([buttonId, formType]) => {
+            const button = document.getElementById(buttonId);
+            if (button) {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.openForm(formType);
+                });
+            }
+        });
+    }
+
     openForm(formType) {
         const formUrl = this.config.forms[formType];
         
-        if (formUrl && this.isValidUrl(formUrl) && !formUrl.includes('REPLACE_WITH_')) {
-            window.open(formUrl, '_blank', 'noopener,noreferrer');
-            this.showNotification('Ouverture du formulaire...', 'info');
+        if (formUrl && formUrl !== `REPLACE_WITH_YOUR_${formType.toUpperCase()}_FORM_URL`) {
+            // Open form in new tab/window
+            window.open(formUrl, '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
         } else {
-            this.showNotification('Formulaire non configuré. Contactez contact@spiritembassyfrance.fr', 'warning');
+            this.showMessage(`Formulaire ${formType} pas encore configuré. Veuillez contacter l'administrateur.`, 'warning');
         }
     }
 
-    registerForEvent(eventTitle) {
-        const registrationUrl = this.config.forms.eventRegistration;
+    loadConfiguration() {
+        // Load contact information
+        this.updateContactInfo();
         
-        if (registrationUrl && this.isValidUrl(registrationUrl) && !registrationUrl.includes('REPLACE_WITH_')) {
-            const url = `${registrationUrl}?event=${encodeURIComponent(eventTitle)}`;
-            window.open(url, '_blank', 'noopener,noreferrer');
-            this.showNotification('Ouverture de l\'inscription...', 'info');
-        } else {
-            const phone = this.config.contact.phone.includes('REPLACE_WITH_') 
-                ? 'contact@spiritembassyfrance.fr' 
-                : this.config.contact.phone;
-            this.showNotification(`Inscription: ${phone}`, 'info');
+        // Load PayPal buttons
+        this.loadPayPalButtons();
+        
+        // Load sermon content
+        this.loadSermonContent();
+        
+        // Load social media links
+        this.updateSocialMediaLinks();
+    }
+
+    updateContactInfo() {
+        const elements = {
+            'contact-email': this.config.contact.email,
+            'contact-phone': this.config.contact.phone,
+            'contact-address': this.config.contact.address,
+            'footer-email': this.config.contact.email,
+            'footer-phone': this.config.contact.phone,
+            'footer-address': `${this.config.contact.address}, ${this.config.contact.city}`
+        };
+
+        Object.entries(elements).forEach(([id, value]) => {
+            const element = document.getElementById(id);
+            if (element && value && !value.startsWith('REPLACE_WITH')) {
+                element.textContent = value;
+            }
+        });
+    }
+
+    loadPayPalButtons() {
+        const containers = {
+            'single-donation': this.config.paypal.singleDonation,
+            'recurring-donation': this.config.paypal.recurringDonation
+        };
+
+        Object.entries(containers).forEach(([containerId, buttonCode]) => {
+            const container = document.getElementById(containerId);
+            if (container && buttonCode && !buttonCode.startsWith('REPLACE_WITH')) {
+                container.innerHTML = buttonCode;
+            }
+        });
+    }
+
+    loadSermonContent() {
+        const players = {
+            'youtube-player': this.config.sermons.latestYouTube,
+            'zoom-player': this.config.sermons.latestZoom,
+            'workspace-player': this.config.sermons.latestGoogleWorkspace
+        };
+
+        Object.entries(players).forEach(([playerId, url]) => {
+            const player = document.getElementById(playerId);
+            if (player && url && !url.startsWith('REPLACE_WITH')) {
+                if (playerId === 'youtube-player') {
+                    this.embedYouTubeVideo(player, url);
+                } else if (playerId === 'zoom-player') {
+                    this.embedZoomRecording(player, url);
+                } else if (playerId === 'workspace-player') {
+                    this.embedWorkspaceContent(player, url);
+                }
+            }
+        });
+    }
+
+    embedYouTubeVideo(container, url) {
+        const videoId = this.extractYouTubeVideoId(url);
+        if (videoId) {
+            container.innerHTML = `
+                <iframe width="100%" height="315" 
+                    src="https://www.youtube.com/embed/${videoId}" 
+                    frameborder="0" 
+                    allowfullscreen>
+                </iframe>
+            `;
         }
     }
 
-    // Admin Panel Functions
-    toggleAdmin() {
-        console.log('toggleAdmin called');
-        const password = prompt('Mot de passe administrateur:');
-        
-        if (password === this.config.admin.password) {
-            this.isAdminMode = !this.isAdminMode;
-            const adminSection = document.getElementById('configuration');
+    extractYouTubeVideoId(url) {
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[2].length === 11) ? match[2] : null;
+    }
+
+    embedZoomRecording(container, url) {
+        container.innerHTML = `
+            <div class="zoom-player">
+                <a href="${url}" target="_blank" class="btn btn-primary">
+                    🎥 Regarder l'Enregistrement Zoom
+                </a>
+                <p class="sermon-note">Cliquez pour ouvrir dans un nouvel onglet</p>
+            </div>
+        `;
+    }
+
+    embedWorkspaceContent(container, url) {
+        if (url.includes('drive.google.com')) {
+            const embedUrl = url.replace('/view', '/preview');
+            container.innerHTML = `
+                <iframe src="${embedUrl}" width="100%" height="315" frameborder="0">
+                </iframe>
+            `;
+        } else {
+            container.innerHTML = `
+                <div class="workspace-player">
+                    <a href="${url}" target="_blank" class="btn btn-secondary">
+                        💾 Accéder au Contenu
+                    </a>
+                </div>
+            `;
+        }
+    }
+
+    updateSocialMediaLinks() {
+        const socialLinks = {
+            'footer-facebook': this.config.social.facebook,
+            'footer-instagram': this.config.social.instagram,
+            'footer-youtube': this.config.social.youtube
+        };
+
+        Object.entries(socialLinks).forEach(([id, url]) => {
+            const element = document.getElementById(id);
+            if (element && url && !url.startsWith('REPLACE_WITH')) {
+                element.href = url;
+                element.target = '_blank';
+                element.rel = 'noopener noreferrer';
+            }
+        });
+    }
+
+    setupMobileNavigation() {
+        // Handle mobile menu closing when clicking outside
+        document.addEventListener('click', (e) => {
+            const navMenu = document.getElementById('nav-menu');
+            const navToggle = document.getElementById('nav-toggle');
             
-            if (this.isAdminMode) {
-                console.log('Activating admin mode');
-                adminSection.classList.remove('hidden');
-                this.showNotification('Mode administrateur activé', 'success');
-                this.populateAdminFields();
-                this.validateConfiguration();
+            if (navMenu && navToggle && 
+                navMenu.classList.contains('active') && 
+                !navMenu.contains(e.target) && 
+                !navToggle.contains(e.target)) {
                 
-                setTimeout(() => {
-                    const headerHeight = document.querySelector('.header')?.offsetHeight || 80;
-                    const targetPosition = adminSection.offsetTop - headerHeight;
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    }
+
+    loadContent() {
+        // Add fade-in animation to sections
+        const sections = document.querySelectorAll('.section');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    }
+
+    setupSmoothScrolling() {
+        // Enhance smooth scrolling for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
                     window.scrollTo({
-                        top: targetPosition,
+                        top: offsetPosition,
                         behavior: 'smooth'
                     });
-                }, 300);
-            } else {
-                console.log('Deactivating admin mode');
-                adminSection.classList.add('hidden');
-                this.showNotification('Mode administrateur désactivé', 'info');
-            }
-        } else if (password !== null) {
-            this.showNotification('Mot de passe incorrect', 'error');
-        }
-    }
-
-    showTab(tabName) {
-        console.log('Showing tab:', tabName);
-        
-        // Remove active class from all tabs and buttons
-        document.querySelectorAll('.tab-content').forEach(tab => {
-            tab.classList.remove('active');
-        });
-        document.querySelectorAll('.tab-button').forEach(button => {
-            button.classList.remove('active');
-        });
-
-        // Add active class to selected tab
-        const targetTab = document.getElementById(`${tabName}-tab`);
-        if (targetTab) {
-            targetTab.classList.add('active');
-        }
-
-        // Activate corresponding button
-        const buttonTexts = {
-            'forms': 'formulaires',
-            'payments': 'paiements',
-            'sermons': 'prédications', 
-            'events': 'événements',
-            'links': 'liens'
-        };
-        
-        document.querySelectorAll('.tab-button').forEach(button => {
-            if (button.textContent.toLowerCase().trim() === buttonTexts[tabName]) {
-                button.classList.add('active');
-            }
+                }
+            });
         });
     }
 
-    populateAdminFields() {
-        setTimeout(() => {
-            // Populate form fields with current config values
-            const formMappings = {
-                'config-new-visitor': 'forms.newVisitor',
-                'config-official-member': 'forms.officialMember',
-                'config-partnership': 'forms.partnership',
-                'config-event-registration': 'forms.eventRegistration'
-            };
-
-            Object.entries(formMappings).forEach(([fieldId, configPath]) => {
-                const field = document.getElementById(fieldId);
-                const value = this.getNestedValue(this.config, configPath);
-                if (field && value) {
-                    field.value = value;
-                }
-            });
-
-            // Populate PayPal fields
-            const paypalField1 = document.getElementById('config-paypal-single');
-            const paypalField2 = document.getElementById('config-paypal-recurring');
-            
-            if (paypalField1) paypalField1.value = this.config.paypal.singleDonation || '';
-            if (paypalField2) paypalField2.value = this.config.paypal.recurringDonation || '';
-
-            // Populate social media fields
-            const socialFields = {
-                'config-facebook': 'social.facebook',
-                'config-instagram': 'social.instagram', 
-                'config-youtube': 'social.youtube',
-                'config-maps': 'social.googleMaps'
-            };
-
-            Object.entries(socialFields).forEach(([fieldId, configPath]) => {
-                const field = document.getElementById(fieldId);
-                const value = this.getNestedValue(this.config, configPath);
-                if (field && value) {
-                    field.value = value;
-                }
-            });
-
-            // Populate sermon fields
-            ['sermon1', 'sermon2', 'sermon3'].forEach(sermonId => {
-                const field = document.getElementById(`config-${sermonId}`);
-                if (field && this.config.sermons[sermonId]) {
-                    field.value = this.config.sermons[sermonId];
-                }
-            });
-        }, 100);
+    setupConfigurationPanel() {
+        // Admin panel functionality
+        window.checkAdminPassword = () => this.checkAdminPassword();
+        window.saveConfiguration = () => this.saveConfiguration();
+        window.testLinks = () => this.testLinks();
+        window.exportConfiguration = () => this.exportConfiguration();
     }
 
-    getNestedValue(obj, path) {
-        return path.split('.').reduce((current, key) => current && current[key], obj);
-    }
+    checkAdminPassword() {
+        const passwordInput = document.getElementById('admin-password');
+        const configContent = document.getElementById('config-content');
+        const passwordSection = document.getElementById('config-password-section');
 
-    setNestedValue(obj, path, value) {
-        const keys = path.split('.');
-        const lastKey = keys.pop();
-        const target = keys.reduce((current, key) => current[key], obj);
-        target[lastKey] = value;
-    }
-
-    saveConfiguration(configPath, value) {
-        this.setNestedValue(this.config, configPath, value);
-        this.saveToStorage();
-        this.applyConfiguration();
-        this.showNotification('Configuration sauvegardée!', 'success');
-    }
-
-    addEvent() {
-        const title = document.getElementById('event-title')?.value.trim();
-        const date = document.getElementById('event-date')?.value;
-        const time = document.getElementById('event-time')?.value;
-        const description = document.getElementById('event-description')?.value.trim();
-        const location = document.getElementById('event-location')?.value.trim();
-
-        if (title && date && description) {
-            const newEvent = {
-                id: Date.now(),
-                title,
-                date,
-                time: time || '',
-                description,
-                location: location || 'Église Spirit Embassy France',
-                created: new Date().toISOString()
-            };
-
-            this.config.events.push(newEvent);
-            this.saveToStorage();
-            this.updateEvents();
-            
-            // Clear form
-            ['event-title', 'event-date', 'event-time', 'event-description', 'event-location'].forEach(id => {
-                const element = document.getElementById(id);
-                if (element) element.value = '';
-            });
-
-            this.showNotification('Événement ajouté!', 'success');
+        if (passwordInput && passwordInput.value === this.config.admin.password) {
+            this.isAdminAuthenticated = true;
+            passwordSection.style.display = 'none';
+            configContent.style.display = 'block';
+            this.loadConfigurationValues();
+            this.showMessage('Accès administrateur accordé', 'success');
         } else {
-            this.showNotification('Titre, date et description requis', 'error');
+            this.showMessage('Mot de passe incorrect', 'error');
+            passwordInput.value = '';
         }
     }
 
-    testLink(url, type = 'generic') {
-        if (!url || url.includes('REPLACE_WITH_')) {
-            this.showNotification('Lien non configuré', 'warning');
-            return false;
-        }
+    loadConfigurationValues() {
+        // Load current configuration into form fields
+        const fields = {
+            'config-new-visitor': this.config.forms.newVisitor,
+            'config-official-member': this.config.forms.officialMember,
+            'config-partnership': this.config.forms.partnership,
+            'config-single-donation': this.config.paypal.singleDonation,
+            'config-recurring-donation': this.config.paypal.recurringDonation,
+            'config-youtube': this.config.sermons.latestYouTube,
+            'config-zoom': this.config.sermons.latestZoom,
+            'config-workspace': this.config.sermons.latestGoogleWorkspace,
+            'config-email': this.config.contact.email,
+            'config-phone': this.config.contact.phone,
+            'config-address': this.config.contact.address
+        };
 
-        if (!this.isValidUrl(url)) {
-            this.showNotification('URL invalide', 'error');
-            return false;
-        }
+        Object.entries(fields).forEach(([id, value]) => {
+            const element = document.getElementById(id);
+            if (element && value) {
+                element.value = value;
+            }
+        });
 
-        window.open(url, '_blank', 'noopener,noreferrer');
-        this.showNotification(`Test du lien ${type}...`, 'info');
-        return true;
+        this.updateConfigurationStatus();
     }
 
-    // Utility Functions
-    isValidUrl(string) {
-        try {
-            new URL(string);
-            return true;
-        } catch {
-            return false;
-        }
-    }
+    updateConfigurationStatus() {
+        const statusElements = {
+            'status-forms': this.checkFormsStatus(),
+            'status-paypal': this.checkPayPalStatus(),
+            'status-sermons': this.checkSermonsStatus()
+        };
 
-    escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text || '';
-        return div.innerHTML;
-    }
-
-    formatDate(dateString) {
-        const date = new Date(dateString);
-        return date.toLocaleDateString('fr-FR', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
+        Object.entries(statusElements).forEach(([id, status]) => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.textContent = status.text;
+                element.className = `status-value ${status.class}`;
+            }
         });
     }
 
-    // Data Persistence
-    saveToStorage() {
-        try {
-            const dataToStore = {
-                events: this.config.events,
-                lastUpdated: new Date().toISOString()
-            };
-            localStorage.setItem('spiritEmbassyConfig', JSON.stringify(dataToStore));
-        } catch (error) {
-            console.warn('Storage not available:', error);
-        }
-    }
-
-    loadStoredData() {
-        try {
-            const stored = localStorage.getItem('spiritEmbassyConfig');
-            if (stored) {
-                const data = JSON.parse(stored);
-                if (data.events) {
-                    this.config.events = data.events;
-                }
-            }
-        } catch (error) {
-            console.warn('Could not load stored data:', error);
-        }
-    }
-
-    // Notification System
-    showNotification(message, type = 'info') {
-        const existingNotification = document.querySelector('.notification');
-        if (existingNotification) {
-            existingNotification.remove();
-        }
-
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
+    checkFormsStatus() {
+        const forms = this.config.forms;
+        const configuredCount = Object.values(forms)
+            .filter(url => url && !url.startsWith('REPLACE_WITH')).length;
         
-        const colors = {
-            success: '#4ecdc4',
-            error: '#ff6b6b',
-            warning: '#ffeaa7',
-            info: '#00d4ff'
+        if (configuredCount === 0) return { text: '❌ Aucun formulaire configuré', class: 'error' };
+        if (configuredCount < 3) return { text: '⚠️ Partiellement configuré', class: 'warning' };
+        return { text: '✅ Entièrement configuré', class: 'success' };
+    }
+
+    checkPayPalStatus() {
+        const paypal = this.config.paypal;
+        const configuredCount = Object.values(paypal)
+            .filter(code => code && !code.startsWith('REPLACE_WITH')).length;
+        
+        if (configuredCount === 0) return { text: '❌ PayPal non configuré', class: 'error' };
+        if (configuredCount < 2) return { text: '⚠️ Partiellement configuré', class: 'warning' };
+        return { text: '✅ PayPal configuré', class: 'success' };
+    }
+
+    checkSermonsStatus() {
+        const sermons = this.config.sermons;
+        const configuredCount = Object.values(sermons)
+            .filter(url => url && !url.startsWith('REPLACE_WITH')).length;
+        
+        if (configuredCount === 0) return { text: '❌ Aucune prédication', class: 'error' };
+        if (configuredCount < 3) return { text: '⚠️ Quelques prédications', class: 'warning' };
+        return { text: '✅ Prédications configurées', class: 'success' };
+    }
+
+    saveConfiguration() {
+        if (!this.isAdminAuthenticated) {
+            this.showMessage('Accès non autorisé', 'error');
+            return;
+        }
+
+        // This would normally save to a backend
+        // For now, we'll just show a success message
+        this.showMessage('Configuration sauvegardée! Rechargez la page pour voir les modifications.', 'success');
+        
+        // Update the runtime configuration
+        this.updateRuntimeConfig();
+    }
+
+    updateRuntimeConfig() {
+        const updates = {
+            'config-new-visitor': 'forms.newVisitor',
+            'config-official-member': 'forms.officialMember',
+            'config-partnership': 'forms.partnership',
+            'config-single-donation': 'paypal.singleDonation',
+            'config-recurring-donation': 'paypal.recurringDonation',
+            'config-youtube': 'sermons.latestYouTube',
+            'config-zoom': 'sermons.latestZoom',
+            'config-workspace': 'sermons.latestGoogleWorkspace',
+            'config-email': 'contact.email',
+            'config-phone': 'contact.phone',
+            'config-address': 'contact.address'
         };
 
-        notification.innerHTML = `
-            <span>${this.escapeHtml(message)}</span>
-            <button onclick="this.parentElement.remove()" style="background: none; border: none; color: inherit; cursor: pointer; margin-left: 10px; font-size: 18px;">&times;</button>
-        `;
-
-        notification.style.cssText = `
-            position: fixed;
-            top: 90px;
-            right: 20px;
-            padding: 16px 20px;
-            border-radius: 8px;
-            color: white;
-            background-color: ${colors[type] || colors.info};
-            font-weight: 500;
-            z-index: 10000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            max-width: 400px;
-            font-size: 14px;
-            animation: slideInRight 0.3s ease-out;
-            font-family: var(--font-family-base, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
-        `;
-
-        // Add CSS animation if not exists
-        if (!document.querySelector('#notification-animation')) {
-            const style = document.createElement('style');
-            style.id = 'notification-animation';
-            style.textContent = `
-                @keyframes slideInRight {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
+        Object.entries(updates).forEach(([inputId, configPath]) => {
+            const input = document.getElementById(inputId);
+            if (input) {
+                const pathArray = configPath.split('.');
+                let configRef = this.config;
+                
+                for (let i = 0; i < pathArray.length - 1; i++) {
+                    configRef = configRef[pathArray[i]];
                 }
-            `;
-            document.head.appendChild(style);
+                
+                configRef[pathArray[pathArray.length - 1]] = input.value;
+            }
+        });
+
+        this.updateConfigurationStatus();
+    }
+
+    testLinks() {
+        if (!this.isAdminAuthenticated) {
+            this.showMessage('Accès non autorisé', 'error');
+            return;
         }
 
-        document.body.appendChild(notification);
+        this.showMessage('Test des liens en cours...', 'warning');
+        
+        // Test major links
+        const linksToTest = [
+            { name: 'Formulaire Visiteurs', url: this.config.forms.newVisitor },
+            { name: 'Formulaire Membres', url: this.config.forms.officialMember },
+            { name: 'YouTube', url: this.config.sermons.latestYouTube },
+            { name: 'Zoom', url: this.config.sermons.latestZoom }
+        ];
+
+        let testResults = [];
+        
+        linksToTest.forEach(link => {
+            if (link.url && !link.url.startsWith('REPLACE_WITH')) {
+                testResults.push(`✅ ${link.name}: Configuré`);
+            } else {
+                testResults.push(`❌ ${link.name}: Non configuré`);
+            }
+        });
 
         setTimeout(() => {
-            if (notification.parentElement) {
-                notification.style.animation = 'slideInRight 0.3s ease-out reverse';
-                setTimeout(() => notification.remove(), 300);
+            this.showMessage(`Résultats du test:\n${testResults.join('\n')}`, 'success');
+        }, 2000);
+    }
+
+    exportConfiguration() {
+        if (!this.isAdminAuthenticated) {
+            this.showMessage('Accès non autorisé', 'error');
+            return;
+        }
+
+        const configData = JSON.stringify(this.config, null, 2);
+        const blob = new Blob([configData], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `spirit-embassy-config-${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+
+        this.showMessage('Configuration exportée avec succès', 'success');
+    }
+
+    showMessage(message, type = 'info') {
+        // Create message element
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${type}`;
+        messageDiv.textContent = message;
+
+        // Find a good place to show it
+        const container = document.querySelector('.container') || document.body;
+        container.appendChild(messageDiv);
+
+        // Auto-remove after 5 seconds
+        setTimeout(() => {
+            if (messageDiv.parentNode) {
+                messageDiv.parentNode.removeChild(messageDiv);
             }
         }, 5000);
-    }
-}
 
-// Global function exports for HTML onclick handlers
-function openForm(formType) {
-    if (window.app) {
-        window.app.openForm(formType);
-    }
-}
-
-function registerForEvent(eventTitle) {
-    if (window.app) {
-        window.app.registerForEvent(eventTitle);
-    }
-}
-
-function toggleAdmin() {
-    if (window.app) {
-        window.app.toggleAdmin();
-    }
-}
-
-function addEvent() {
-    if (window.app) {
-        window.app.addEvent();
-    }
-}
-
-function saveConfig(configPath, elementId) {
-    if (window.app) {
-        const element = document.getElementById(elementId);
-        if (element) {
-            window.app.saveConfiguration(configPath, element.value.trim());
-        }
-    }
-}
-
-function testLink(url, type) {
-    if (window.app) {
-        window.app.testLink(url, type);
-    }
-}
-
-// Initialize the application
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM Content Loaded - Initializing Spirit Embassy App');
-    window.app = new SpiritEmbassyApp();
-});
-
-// Also initialize if DOM is already loaded
-if (document.readyState !== 'loading') {
-    console.log('DOM Already Ready - Initializing Spirit Embassy App');
-    window.app = new SpiritEmbassyApp();
-}
-
-// Service Worker Registration for offline support
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(() => {
-            console.log('Service Worker not available');
+        // Make it dismissible by clicking
+        messageDiv.addEventListener('click', () => {
+            if (messageDiv.parentNode) {
+                messageDiv.parentNode.removeChild(messageDiv);
+            }
         });
-    });
+    }
 }
+
+// Initialize the application when DOM is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new SpiritEmbassyApp();
+    });
+} else {
+    new SpiritEmbassyApp();
+}
+
+// Export for global access if needed
+window.SpiritEmbassyApp = SpiritEmbassyApp;
